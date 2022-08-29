@@ -5,6 +5,7 @@
 ##===----------------------------------------------------------------------===##
 include(TestFile)
 include(CopyDir)
+include(LLVMIRUtil)
 
 set(_DEFAULT_TEST_SUITE_COPY_DATA OFF)
 if(TEST_SUITE_REMOTE_HOST)
@@ -66,6 +67,17 @@ function(llvm_test_executable_no_test target)
     add_custom_command(TARGET ${target} POST_BUILD
       COMMAND ${TEST_SUITE_LLVM_SIZE} --format=sysv $<TARGET_FILE:${target}>
       > $<TARGET_FILE:${target}>.size)
+  endif()
+
+  if(TEST_SUITE_LLVM_IR)
+    target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+    set_target_properties(${target} PROPERTIES LINKER_LANGUAGE C)
+    llvmir_attach_bc_target(
+      TARGET ${target}_bc
+      DEPENDS ${target})
+    llvmir_attach_disassemble_target(
+      TARGET ${target}_ll
+      DEPENDS ${target}_bc)
   endif()
 endfunction()
 

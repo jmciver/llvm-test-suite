@@ -63,7 +63,7 @@ set(CMAKE_MODULE_PATH
   ${CMAKE_MODULE_PATH}
   "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
   "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules"
-  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/third-party/llvm-ir-cmake-utils"
+  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/third-party/llvm-ir-cmake-utils/cmake"
   )
 
 # Sanity check our source directory to make sure that we are not trying to

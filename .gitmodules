@@ -1,0 +1,4 @@
+[submodule "cmake/modules/third-party/llvm-ir-cmake-utils"]
+	path = cmake/modules/third-party/llvm-ir-cmake-utils
+	url = git@github.com:jmciver/llvm-ir-cmake-utils.git
+	branch = development/memory-load/undef-to-poison
